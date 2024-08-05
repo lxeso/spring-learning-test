@@ -33,10 +33,10 @@ public class MemberController {
     @PutMapping("/members/{id}")
     public ResponseEntity<Member> update(@RequestBody Member updateMember, @PathVariable Long id) {
         // TODO: member의 수정 정보와 url 상의 id 정보를 받아 member 정보를 수정한다.
-        Member member = members.stream()
-            .filter(it -> Objects.equals(it.getId(), id))
-            .findFirst()
-            .orElseThrow(RuntimeException::new);
+        Member member = members.stream() // members는 Member 객체들의 리스트입니다. stream() 메소드는 컬렉션을 스트림으로 변환합니다. 스트림은 데이터 컬렉션을 선언적으로 처리할 수 있는 API를 제공합니다. 이 스트림을 사용하여 데이터를 필터링, 매핑, 정렬, 수집 등 다양한 연산을 체이닝 방식으로 적용할 수 있습니다.
+            .filter(it -> Objects.equals(it.getId(), id)) // filter 메소드는 스트림의 각 요소에 대해 주어진 조건을 테스트하고, 조건을 만족하는 요소들만으로 구성된 새로운 스트림을 생성합니다. it는 람다 표현식에서 스트림의 각 Member 객체를 참조하기 위한 변수입니다. 이 람다 표현식은 각 Member 객체의 id 필드가 주어진 id 값과 동일한지 검사합니다.
+            .findFirst() // findFirst 메소드는 필터링된 스트림에서 첫 번째 요소를 Optional 객체로 반환합니다.
+            .orElseThrow(RuntimeException::new); // orElseThrow 메소드는 Optional 객체가 값을 포함하고 있으면 그 값을 반환합니다. 만약 Optional 객체가 비어 있으면 (findFirst에서 요소를 찾지 못했을 때), 주어진 예외 생성자를 사용하여 새 예외를 발생시킵니다
 
         member.update(updateMember);
         return ResponseEntity.ok(member);
