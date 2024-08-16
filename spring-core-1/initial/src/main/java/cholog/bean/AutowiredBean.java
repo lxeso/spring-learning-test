@@ -6,8 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class AutowiredBean {
     /*
-    어떤 방법으로 Component에 Bean을 주입하는지 학습하기
+    어떤 방법으로 Component에 Bean을 주입(의존성 주입)하는지 학습하기
      */
+    @Autowired
     private SpringBean springBean;
 
     public String sayHello() {
