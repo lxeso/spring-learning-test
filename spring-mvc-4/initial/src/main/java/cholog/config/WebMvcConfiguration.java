@@ -21,7 +21,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     // TODO: "/admin/**" 요청 시 LoginInterceptor 동작하게 하기
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new CheckLoginInterceptor()).addPathPatterns("/admon/**");
+        registry.addInterceptor(new CheckLoginInterceptor()).addPathPatterns("/admin/**");
     }
 
     // TODO: AuthenticationPrincipalArgumentResolver 등록하기
