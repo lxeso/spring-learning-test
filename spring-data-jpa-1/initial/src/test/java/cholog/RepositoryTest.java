@@ -38,6 +38,7 @@ public class RepositoryTest {
     void findById() {
         entityManager.persist(new Customer("Jack", "Bauer"));
         entityManager.persist(new Customer("Chloe", "O'Brian"));
+        entityManager.flush();  // 즉시 데이터베이스에 반영
 
         Customer customer = customerRepository.findById(1L).orElseThrow(IllegalArgumentException::new);
         assertThat(customer.getFirstName()).isEqualTo("Jack");
